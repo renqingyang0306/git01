@@ -1,0 +1,14 @@
+package com.rqy.service;
+
+import com.rqy.domain.User;
+
+/**
+ * @author 任清阳
+ * @Email 1277409109@qq.com
+ * @date 2019/8/6 12:44
+ */
+public interface UserService {
+    public User selectByPrimaryKey(int id);
+    public User selectByUserByUsernameAndPassword(User user);
+    public void insertUser(User user);
+}

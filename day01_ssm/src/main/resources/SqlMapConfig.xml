@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"/>
+    <!--配置懒加载-->
+    <settings>
+        <!--二级缓存开关-->
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+    <!--别名配置-->
+    <typeAliases>
+        <!--批量配置别名
+        [name],指定批量定义别名的类包，别名为类名（首字母大小写都可以）
+        -->
+        <package name="com.rqy.domain"/>
+    </typeAliases>
+    <!-- 配置mybatis的环境信息 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置JDBC事务控制，由mybatis进行管理 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源，采用dbcp连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverClass}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--告诉mybatis加载映射文件，几种方法-->
+    <mappers>
+       <!-- <mapper resource="User.xml"/>-->
+        <!--<mapper resource="com/rqy/mapper/UserMapper.xml"/>-->
+        <!--使用完全限定路径-->
+       <!-- <mapper url="file:///D:\workspace_spingmvc\mybatis_01\config\sqlmap\User.xml" />-->
+       <!--与类名相同，一定要有映射文件相对应，此种方法要求mapper接口和mapper映射文件要名称相同，且放到同一个目录下-->
+        <!--<mapper class="com.rqy.mapper.UserMapper"/>-->
+        <!--//注册指定包下的所有映射文件-->
+        <package name="com.rqy.mapper"/>
+    </mappers>
+
+</configuration>
