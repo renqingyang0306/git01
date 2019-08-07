@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rqy.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.rqy.domain.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+      *
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>
